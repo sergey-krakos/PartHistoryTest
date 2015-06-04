@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
+using System.Threading;
 
 namespace JobHost
 {
@@ -8,15 +10,32 @@ namespace JobHost
     {
         static void Main(string[] args)
         {
-            string reportsFolder = args[0];
+            bool isAlreadyStarted;
 
-            InitApp(reportsFolder);
+            string jobHostAppPath = Assembly.GetExecutingAssembly().Location;
+            string processName = Path.GetFileNameWithoutExtension(jobHostAppPath);
 
-            PartHistoryJobMonitor jobMonitor = new PartHistoryJobMonitor(reportsFolder);
-            jobMonitor.Start();
+            using (Mutex instanceMutex = new Mutex(false, processName, out isAlreadyStarted))
+            {
+                if (isAlreadyStarted || instanceMutex.WaitOne(100, false))
+                {
+                    Console.Out.WriteLine("Already started.");
+                    Console.In.Read();
+                    return;
+                }
 
-            Console.Out.WriteLine("Started.");
-            Console.In.Read();
+                string reportsFolder = args[0];
+
+                InitApp(reportsFolder);
+
+                PartHistoryJobMonitor jobMonitor = new PartHistoryJobMonitor(reportsFolder);
+                jobMonitor.Start();
+
+                Console.Out.WriteLine("Started.");
+                Console.In.Read();
+
+                instanceMutex.ReleaseMutex();
+            }
         }
 
         private static void InitApp(string reportsFolder)

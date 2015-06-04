@@ -19,7 +19,7 @@ namespace Common
         public void SaveJobInfo(PartHistoryJobInfo jobInfo)
         {
             string filePath = Path.Combine(_reportsFolder, jobInfo.JobId + JobExtension);
-            string fileContent = XmlSerializationUtility.SerializeToXDocument(jobInfo).ToString(SaveOptions.OmitDuplicateNamespaces);
+            string fileContent = XmlSerializationUtility.SerializeToXDocument(jobInfo).ToString();
             File.WriteAllText(filePath, fileContent);
         }
 

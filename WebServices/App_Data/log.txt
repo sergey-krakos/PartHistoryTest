@@ -112,3 +112,42 @@ PartHistoryNew.StartPartHistory - Processes found: 1
 PartHistoryNew.StartPartHistory. JobId: 311915cb-9cd1-4810-b431-3c0d2f605300
 PartHistoryNew.StartPartHistory - Processes found: 1
 PartHistoryNew.StartPartHistory. JobId: 323cbe65-a234-4061-937b-10355ad68ee4
+System.ServiceModel.ServiceActivationException: The service '/WebServices/PartHistoryNew.svc' cannot be activated due to an exception during compilation.  The exception message is: The service cannot be activated because it does not support ASP.NET compatibility. ASP.NET compatibility is enabled for this application. Turn off ASP.NET compatibility mode in the web.config or add the AspNetCompatibilityRequirements attribute to the service type with RequirementsMode setting as 'Allowed' or 'Required'.. ---> System.InvalidOperationException: The service cannot be activated because it does not support ASP.NET compatibility. ASP.NET compatibility is enabled for this application. Turn off ASP.NET compatibility mode in the web.config or add the AspNetCompatibilityRequirements attribute to the service type with RequirementsMode setting as 'Allowed' or 'Required'.
+   at System.ServiceModel.Activation.HostedAspNetEnvironment.ValidateCompatibilityRequirements(AspNetCompatibilityRequirementsMode compatibilityMode)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(ServiceActivationInfo serviceActivationInfo, EventTraceActivity eventTraceActivity)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath, EventTraceActivity eventTraceActivity)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.OnAsyncHandlerCompletion(IAsyncResult ar)
+System.ServiceModel.ServiceActivationException: The service '/WebServices/PartHistoryNew.svc' cannot be activated due to an exception during compilation.  The exception message is: The service cannot be activated because it does not support ASP.NET compatibility. ASP.NET compatibility is enabled for this application. Turn off ASP.NET compatibility mode in the web.config or add the AspNetCompatibilityRequirements attribute to the service type with RequirementsMode setting as 'Allowed' or 'Required'.. ---> System.InvalidOperationException: The service cannot be activated because it does not support ASP.NET compatibility. ASP.NET compatibility is enabled for this application. Turn off ASP.NET compatibility mode in the web.config or add the AspNetCompatibilityRequirements attribute to the service type with RequirementsMode setting as 'Allowed' or 'Required'.
+   at System.ServiceModel.Activation.HostedAspNetEnvironment.ValidateCompatibilityRequirements(AspNetCompatibilityRequirementsMode compatibilityMode)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(ServiceActivationInfo serviceActivationInfo, EventTraceActivity eventTraceActivity)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath, EventTraceActivity eventTraceActivity)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.OnAsyncHandlerCompletion(IAsyncResult ar)
+System.ServiceModel.ServiceActivationException: The service '/WebServices/PartHistoryNew.svc' cannot be activated due to an exception during compilation.  The exception message is: The service cannot be activated because it does not support ASP.NET compatibility. ASP.NET compatibility is enabled for this application. Turn off ASP.NET compatibility mode in the web.config or add the AspNetCompatibilityRequirements attribute to the service type with RequirementsMode setting as 'Allowed' or 'Required'.. ---> System.InvalidOperationException: The service cannot be activated because it does not support ASP.NET compatibility. ASP.NET compatibility is enabled for this application. Turn off ASP.NET compatibility mode in the web.config or add the AspNetCompatibilityRequirements attribute to the service type with RequirementsMode setting as 'Allowed' or 'Required'.
+   at System.ServiceModel.Activation.HostedAspNetEnvironment.ValidateCompatibilityRequirements(AspNetCompatibilityRequirementsMode compatibilityMode)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(ServiceActivationInfo serviceActivationInfo, EventTraceActivity eventTraceActivity)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath, EventTraceActivity eventTraceActivity)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.OnAsyncHandlerCompletion(IAsyncResult ar)

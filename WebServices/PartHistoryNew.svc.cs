@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using System.Web.Hosting;
 using Common;
 
@@ -23,12 +24,14 @@ namespace WebServices
             string jobHostAppPath = ConfigurationManager.AppSettings["JobHostApp"];
             string processName = Path.GetFileNameWithoutExtension(jobHostAppPath);
 
-            Process[] processes = Process.GetProcessesByName(processName);
-            Trace.WriteLine("PartHistoryNew.StartPartHistory - Processes found: " + processes.Length);
-
-            if (processes.Length == 0)
+            bool isAlreadyStarted;
+            using (Mutex instanceMutex = new Mutex(false, processName, out isAlreadyStarted))
             {
-                StartJobHostProcess();
+                if (!isAlreadyStarted && instanceMutex.WaitOne(0, false))
+                {
+                    StartJobHostProcess();
+                    Trace.WriteLine("PartHistoryNew.StartPartHistory - JobHost started.");
+                }
             }
 
             Guid jobId = StartNewJob(seconds);

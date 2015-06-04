@@ -18,6 +18,10 @@ namespace Common
 
         public Guid JobId { get; set; }
 
+        public Guid DocumentId { get; set; }
+
+        public Guid EmailParameters { get; set; }
+
         public int Seconds { get; set; }
 
         public JobStatus Status { get; set; }
