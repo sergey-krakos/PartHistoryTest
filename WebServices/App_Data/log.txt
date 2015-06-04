@@ -1,0 +1,114 @@
+PartHistoryNew.StartPartHistory - Processes found: 0
+PartHistoryNew.StartJobHostProcess - Starting process.
+PartHistoryNew.StartPartHistory - Processes found: 0
+PartHistoryNew.StartJobHostProcess - Starting process.
+PartHistoryNew.StartPartHistory - Processes found: 0
+PartHistoryNew.StartJobHostProcess - Starting process.
+PartHistoryNew.StartJobHostProcess - Process started.
+System.ServiceModel.ServiceActivationException: The service '/WebServices/PartHistoryNew.svc' cannot be activated due to an exception during compilation.  The exception message is: This collection already contains an address with scheme http.  There can be at most one address per scheme in this collection. If your service is being hosted in IIS you can fix the problem by setting 'system.serviceModel/serviceHostingEnvironment/multipleSiteBindingsEnabled' to true or specifying 'system.serviceModel/serviceHostingEnvironment/baseAddressPrefixFilters'.
+Parameter name: item. ---> System.ArgumentException: This collection already contains an address with scheme http.  There can be at most one address per scheme in this collection. If your service is being hosted in IIS you can fix the problem by setting 'system.serviceModel/serviceHostingEnvironment/multipleSiteBindingsEnabled' to true or specifying 'system.serviceModel/serviceHostingEnvironment/baseAddressPrefixFilters'.
+Parameter name: item
+   at System.ServiceModel.UriSchemeKeyedCollection.InsertItem(Int32 index, Uri item)
+   at System.Collections.Generic.SynchronizedCollection`1.Add(T item)
+   at System.ServiceModel.UriSchemeKeyedCollection..ctor(Uri[] addresses)
+   at System.ServiceModel.ServiceHost..ctor(Type serviceType, Uri[] baseAddresses)
+   at System.ServiceModel.Activation.ServiceHostFactory.CreateServiceHost(Type serviceType, Uri[] baseAddresses)
+   at System.ServiceModel.Activation.ServiceHostFactory.CreateServiceHost(String constructorString, Uri[] baseAddresses)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.CreateService(String normalizedVirtualPath, EventTraceActivity eventTraceActivity)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(ServiceActivationInfo serviceActivationInfo, EventTraceActivity eventTraceActivity)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath, EventTraceActivity eventTraceActivity)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.ServiceHostingEnvironment.EnsureServiceAvailableFast(String relativeVirtualPath, EventTraceActivity eventTraceActivity)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.HandleRequest()
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.OnAsyncEventCompletion(IAsyncResult ar)
+System.ServiceModel.ServiceActivationException: The service '/WebServices/PartHistoryNew.svc' cannot be activated due to an exception during compilation.  The exception message is: This collection already contains an address with scheme http.  There can be at most one address per scheme in this collection. If your service is being hosted in IIS you can fix the problem by setting 'system.serviceModel/serviceHostingEnvironment/multipleSiteBindingsEnabled' to true or specifying 'system.serviceModel/serviceHostingEnvironment/baseAddressPrefixFilters'.
+Parameter name: item. ---> System.ArgumentException: This collection already contains an address with scheme http.  There can be at most one address per scheme in this collection. If your service is being hosted in IIS you can fix the problem by setting 'system.serviceModel/serviceHostingEnvironment/multipleSiteBindingsEnabled' to true or specifying 'system.serviceModel/serviceHostingEnvironment/baseAddressPrefixFilters'.
+Parameter name: item
+   at System.ServiceModel.UriSchemeKeyedCollection.InsertItem(Int32 index, Uri item)
+   at System.Collections.Generic.SynchronizedCollection`1.Add(T item)
+   at System.ServiceModel.UriSchemeKeyedCollection..ctor(Uri[] addresses)
+   at System.ServiceModel.ServiceHost..ctor(Type serviceType, Uri[] baseAddresses)
+   at System.ServiceModel.Activation.ServiceHostFactory.CreateServiceHost(Type serviceType, Uri[] baseAddresses)
+   at System.ServiceModel.Activation.ServiceHostFactory.CreateServiceHost(String constructorString, Uri[] baseAddresses)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.CreateService(String normalizedVirtualPath, EventTraceActivity eventTraceActivity)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(ServiceActivationInfo serviceActivationInfo, EventTraceActivity eventTraceActivity)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath, EventTraceActivity eventTraceActivity)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.OnAsyncEventCompletion(IAsyncResult ar)
+PartHistoryNew.StartPartHistory - Processes found: 0
+PartHistoryNew.StartJobHostProcess - Starting process.
+PartHistoryNew.StartJobHostProcess - Process started.
+PartHistoryNew.StartPartHistory - Processes found: 0
+PartHistoryNew.StartJobHostProcess - Starting process.
+PartHistoryNew.StartJobHostProcess - Process started.
+PartHistoryNew.StartPartHistory. JobId: 2628786a-87fc-421c-a927-d8d9a3b3198e
+PartHistoryNew.StartPartHistory - Processes found: 0
+PartHistoryNew.StartJobHostProcess - Starting process.
+PartHistoryNew.StartJobHostProcess - Process started.
+PartHistoryNew.StartPartHistory. JobId: ba31f251-bdbb-42cd-9ef1-bb71e86e37f3
+PartHistoryNew.StartPartHistory - Processes found: 0
+PartHistoryNew.StartJobHostProcess - Starting process.
+PartHistoryNew.StartJobHostProcess - Process started.
+PartHistoryNew.StartPartHistory. JobId: 4c27a89e-6416-43c8-a9d5-361ec37d3126
+PartHistoryNew.StartPartHistory - Processes found: 0
+PartHistoryNew.StartJobHostProcess - Starting process.
+PartHistoryNew.StartJobHostProcess - Process started.
+PartHistoryNew.StartPartHistory. JobId: 755252f0-9d0e-468a-b1ed-146ab00ee595
+PartHistoryNew.StartPartHistory - Processes found: 0
+PartHistoryNew.StartJobHostProcess - Starting process.
+PartHistoryNew.StartJobHostProcess - Process started.
+PartHistoryNew.StartPartHistory. JobId: 5aa71b62-ef3b-45d9-b7e0-adf0b858bdca
+PartHistoryNew.StartPartHistory - Processes found: 0
+PartHistoryNew.StartJobHostProcess - Starting process.
+PartHistoryNew.StartJobHostProcess - Process started.
+PartHistoryNew.StartPartHistory. JobId: 0cd04aa6-39d7-4401-946b-6fd3d9c4a07c
+PartHistoryNew.StartPartHistory - Processes found: 0
+PartHistoryNew.StartJobHostProcess - Starting process.
+PartHistoryNew.StartJobHostProcess - Process started.
+PartHistoryNew.StartPartHistory. JobId: b2b7864e-753c-463a-8000-3a5456a6cd35
+PartHistoryNew.StartPartHistory - Processes found: 0
+PartHistoryNew.StartJobHostProcess - Starting process.
+PartHistoryNew.StartJobHostProcess - Process started.
+PartHistoryNew.StartPartHistory. JobId: 4cdadc86-a896-46b5-82be-c077afc95e57
+PartHistoryNew.StartPartHistory - Processes found: 0
+PartHistoryNew.StartJobHostProcess - Starting process.
+PartHistoryNew.StartJobHostProcess - Process started.
+PartHistoryNew.StartPartHistory. JobId: 3dcb115e-4d52-4498-b845-231fba10de09
+PartHistoryNew.StartPartHistory - Processes found: 0
+PartHistoryNew.StartJobHostProcess - Starting process.
+PartHistoryNew.StartJobHostProcess - Process started.
+PartHistoryNew.StartPartHistory. JobId: 2e936aa4-248b-4d36-9b2a-5b5bb7399148
+PartHistoryNew.StartPartHistory - Processes found: 0
+PartHistoryNew.StartJobHostProcess - Starting process.
+PartHistoryNew.StartJobHostProcess - Process started.
+PartHistoryNew.StartPartHistory. JobId: 718b62ea-182b-48bd-8a74-3be24611177f
+PartHistoryNew.StartPartHistory - Processes found: 0
+PartHistoryNew.StartJobHostProcess - Starting process.
+PartHistoryNew.StartJobHostProcess - Process started.
+PartHistoryNew.StartPartHistory. JobId: 3d5a0712-49ee-4390-bb5b-24f84e022274
+PartHistoryNew.StartPartHistory - Processes found: 0
+PartHistoryNew.StartJobHostProcess - Starting process.
+PartHistoryNew.StartJobHostProcess - Process started.
+Save - begin
+Save - end
+PartHistoryNew.StartPartHistory. JobId: 7a67d94b-6f56-48ad-b09d-66c44d9197ba
+PartHistoryNew.StartPartHistory - Processes found: 1
+Save - begin
+Save - end
+PartHistoryNew.StartPartHistory. JobId: b30bc729-2e1f-4ad7-a05f-bb4189081a57
+PartHistoryNew.StartPartHistory - Processes found: 0
+PartHistoryNew.StartJobHostProcess - Starting process.
+PartHistoryNew.StartJobHostProcess - Process started.
+PartHistoryNew.StartPartHistory. JobId: 561716c2-7a78-47ee-a5b6-8d1d3dbcb796
+PartHistoryNew.StartPartHistory - Processes found: 1
+PartHistoryNew.StartPartHistory. JobId: 7e148dfc-3621-4985-bdc3-832890ffd681
+PartHistoryNew.StartPartHistory - Processes found: 1
+PartHistoryNew.StartPartHistory. JobId: e975af9f-9e0f-4df2-b5f8-040f3b0b7e2a
+PartHistoryNew.StartPartHistory - Processes found: 1
+PartHistoryNew.StartPartHistory. JobId: 311915cb-9cd1-4810-b431-3c0d2f605300
+PartHistoryNew.StartPartHistory - Processes found: 1
+PartHistoryNew.StartPartHistory. JobId: 323cbe65-a234-4061-937b-10355ad68ee4
