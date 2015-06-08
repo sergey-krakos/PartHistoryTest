@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace JobHost
 {
@@ -76,9 +77,13 @@ namespace JobHost
             _lock.EnterReadLock();
             try
             {
-                if (_jobs.ContainsKey(jobId))
+                PartHistoryJobInfo job;
+                if (_jobs.TryGetValue(jobId, out job))
                 {
-                    return;
+                    if (job.Status == JobStatus.Aborted)
+                    {
+                        
+                    }
                 }
             }
             finally
@@ -89,25 +94,27 @@ namespace JobHost
             PartHistoryJobInfo jobInfo = _jobRepository.GetJobInfo(jobId);
             switch (jobInfo.Status)
             {
-                case JobStatus.InProgress:
+               case JobStatus.InProgress:
                     StartJob(jobInfo);
+                    break;
+               case JobStatus.Aborted:
                     break;
             }
         }
 
         private void StartJob(PartHistoryJobInfo jobInfo)
         {
+            jobInfo.Token = new CancellationTokenSource();
             _lock.EnterWriteLock();
             try
             {
+                Task.Factory.StartNew(() => GenerateReport, jobInfo, jobInfo.Token);
                 _jobs.Add(jobInfo.JobId, jobInfo);
             }
             finally
             {
                 _lock.ExitWriteLock();
             }
-
-            ThreadPool.QueueUserWorkItem(GenerateReport, jobInfo);
         }
 
         private void GenerateReport(object jobInfoObj)

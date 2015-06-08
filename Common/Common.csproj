@@ -38,6 +38,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ErrorCode.cs" />
     <Compile Include="JobStatus.cs" />
     <Compile Include="PartHistoryJobInfo.cs" />
     <Compile Include="PartHistoryJobRepository.cs" />

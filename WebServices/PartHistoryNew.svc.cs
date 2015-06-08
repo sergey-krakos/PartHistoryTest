@@ -19,7 +19,7 @@ namespace WebServices
             _jobRepository = new PartHistoryJobRepository(_reportsFolder);
         }
 
-        public Guid StartPartHistory(int seconds)
+        public Guid StartPartHistory(int seconds, string callback)
         {
             string jobHostAppPath = ConfigurationManager.AppSettings["JobHostApp"];
             string processName = Path.GetFileNameWithoutExtension(jobHostAppPath);
@@ -34,11 +34,34 @@ namespace WebServices
                 }
             }
 
-            Guid jobId = StartNewJob(seconds);
+            Guid jobId = StartNewJob(seconds, callback);
             Trace.WriteLine("PartHistoryNew.StartPartHistory. JobId: " + jobId);
             return jobId;
         }
 
+        public AbortPartHistoryOutput AbortPartHistory(Guid jobId)
+        {
+            Trace.WriteLine("PartHistoryNew.AbortPartHistory - begin.");
+
+            AbortPartHistoryOutput response = new AbortPartHistoryOutput();
+
+            PartHistoryJobInfo jobInfo = _jobRepository.GetJobInfo(jobId);
+
+            response.Status = jobInfo.Status;
+
+            if (jobInfo.Status == JobStatus.Completed)
+            {
+                Trace.WriteLine("PartHistoryNew.AbortPartHistory - already completed");
+            }
+            else
+            {
+                jobInfo.Status = JobStatus.Aborted;
+                _jobRepository.SaveJobInfo(jobInfo);
+            }
+
+            Trace.WriteLine("PartHistoryNew.AbortPartHistory - end.");
+            return response;
+        }
         public GetPartHistoryOutput GetPartHistoryStatus(Guid jobId)
         {
             Trace.WriteLine("PartHistoryNew.GetPartHistoryStatus - begin.");
@@ -46,6 +69,9 @@ namespace WebServices
             GetPartHistoryOutput response = new GetPartHistoryOutput();
 
             PartHistoryJobInfo jobInfo = _jobRepository.GetJobInfo(jobId);
+
+            response.Status = jobInfo.Status;
+
             if (jobInfo.Status == JobStatus.Completed)
             {
                 string fileName = _jobRepository.GetReportPath(jobId);
@@ -53,6 +79,8 @@ namespace WebServices
                 Trace.WriteLine("PartHistoryNew.GetPartHistoryStatus - Reading file: " + fileName);
                 response.ReturnedDocument = File.ReadAllText(fileName);
                 response.IsReady = true;
+                response.ErrorCode = ErrorCode.Success;
+                
             }
             else
             {
@@ -63,9 +91,10 @@ namespace WebServices
             return response;
         }
 
-        private Guid StartNewJob(int seconds)
+        private Guid StartNewJob(int seconds, string callback)
         {
-            PartHistoryJobInfo jobInfo = new PartHistoryJobInfo(seconds);
+            PartHistoryJobInfo jobInfo = new PartHistoryJobInfo(seconds) { CallBackUrl = callback };
+
             _jobRepository.SaveJobInfo(jobInfo);
 
             return jobInfo.JobId;

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using System.Xml.Serialization;
 
 namespace Common
 {
@@ -20,10 +22,13 @@ namespace Common
 
         public Guid DocumentId { get; set; }
 
-        public Guid EmailParameters { get; set; }
+        public string CallBackUrl { get; set; }
 
         public int Seconds { get; set; }
 
         public JobStatus Status { get; set; }
+
+        [XmlIgnore]
+        public CancellationTokenSource Token { get; set; }
     }
 }

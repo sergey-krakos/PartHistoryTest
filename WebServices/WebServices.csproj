@@ -67,6 +67,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbortPartHistoryOutput.cs" />
     <Compile Include="ErrorCode.cs" />
     <Compile Include="GetPartHistoryOutput.cs" />
     <Compile Include="Global.asax.cs">
