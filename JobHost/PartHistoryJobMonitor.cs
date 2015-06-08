@@ -104,11 +104,11 @@ namespace JobHost
 
         private void StartJob(PartHistoryJobInfo jobInfo)
         {
-            jobInfo.Token = new CancellationTokenSource();
+            jobInfo.TokenSource = new CancellationTokenSource();
             _lock.EnterWriteLock();
             try
             {
-                Task.Factory.StartNew(() => GenerateReport, jobInfo, jobInfo.Token);
+                Task t = Task.Factory.StartNew(status => GenerateReport(jobInfo, jobInfo.TokenSource.Token), jobInfo.TokenSource.Token, TaskCreationOptions.LongRunning);
                 _jobs.Add(jobInfo.JobId, jobInfo);
             }
             finally
@@ -117,8 +117,10 @@ namespace JobHost
             }
         }
 
-        private void GenerateReport(object jobInfoObj)
+        private void GenerateReport(object jobInfoObj, CancellationToken token)
         {
+            token.ThrowIfCancellationRequested();
+
             PartHistoryJobInfo jobInfo = (PartHistoryJobInfo)jobInfoObj;
             string reportPath = _jobRepository.GetReportPath(jobInfo.JobId);
 

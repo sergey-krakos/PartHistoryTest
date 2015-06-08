@@ -29,6 +29,6 @@ namespace Common
         public JobStatus Status { get; set; }
 
         [XmlIgnore]
-        public CancellationTokenSource Token { get; set; }
+        public CancellationTokenSource TokenSource { get; set; }
     }
 }
