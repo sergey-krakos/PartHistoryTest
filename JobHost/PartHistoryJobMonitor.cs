@@ -74,31 +74,24 @@ namespace JobHost
 
             Guid jobId = Guid.Parse(jobIdStr);
 
-            _lock.EnterReadLock();
+            PartHistoryJobInfo jobInfo = _jobRepository.GetJobInfo(jobId);
+
+            _lock.EnterUpgradeableReadLock();
             try
             {
-                PartHistoryJobInfo job;
-                if (_jobs.TryGetValue(jobId, out job))
+                switch (jobInfo.Status)
                 {
-                    if (job.Status == JobStatus.Aborted)
-                    {
-                        
-                    }
+                    case JobStatus.InProgress:
+                        StartJob(jobInfo);
+                        break;
+                    case JobStatus.Aborted:
+                        AbortJob(jobInfo);
+                        break;
                 }
             }
             finally
             {
-                _lock.ExitReadLock();
-            }
-
-            PartHistoryJobInfo jobInfo = _jobRepository.GetJobInfo(jobId);
-            switch (jobInfo.Status)
-            {
-               case JobStatus.InProgress:
-                    StartJob(jobInfo);
-                    break;
-               case JobStatus.Aborted:
-                    break;
+                _lock.ExitUpgradeableReadLock();
             }
         }
 
@@ -108,7 +101,7 @@ namespace JobHost
             _lock.EnterWriteLock();
             try
             {
-                Task t = Task.Factory.StartNew(status => GenerateReport(jobInfo, jobInfo.TokenSource.Token), jobInfo.TokenSource.Token, TaskCreationOptions.LongRunning);
+                Task task = Task.Factory.StartNew(status => GenerateReport(jobInfo, jobInfo.TokenSource.Token), jobInfo.TokenSource.Token, TaskCreationOptions.LongRunning);
                 _jobs.Add(jobInfo.JobId, jobInfo);
             }
             finally
@@ -116,6 +109,25 @@ namespace JobHost
                 _lock.ExitWriteLock();
             }
         }
+
+        private void AbortJob(PartHistoryJobInfo jobInfo)
+        {
+            jobInfo.TokenSource = new CancellationTokenSource();
+            _lock.EnterWriteLock();
+            try
+            {
+                if (!jobInfo.TokenSource.IsCancellationRequested)
+                {
+                    jobInfo.TokenSource.Cancel();
+                }
+                _jobs[jobInfo.JobId] = jobInfo;
+            }
+            finally
+            {
+                _lock.ExitWriteLock();
+            }
+        }
+
 
         private void GenerateReport(object jobInfoObj, CancellationToken token)
         {
